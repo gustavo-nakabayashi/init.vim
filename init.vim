@@ -4,7 +4,7 @@ endif
 set number 
 set noswapfile 
 syntax on
-
+set nocompatible
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -53,6 +53,7 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+nnoremap <leader><C-p> :find 
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
 
 

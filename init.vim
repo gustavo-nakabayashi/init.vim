@@ -42,6 +42,17 @@ set incsearch
 set path+=**
 "Display all matching files when we tab complete
 set wildmenu
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
 
 

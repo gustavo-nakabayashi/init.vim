@@ -31,7 +31,6 @@ let g:semshi#simplify_markup = "false"
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
 colorscheme onedark
-endif
 
 inoremap jk <ESC>
 nnoremap <SPACE> <Nop>
@@ -39,8 +38,10 @@ let mapleader = " "
 set hlsearch 
 set ignorecase 
 set incsearch 
-
-
+"Search down into subfolders in tab completion
+set path+=**
+"Display all matching files when we tab complete
+set wildmenu
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
 
 

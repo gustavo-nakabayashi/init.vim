@@ -3,8 +3,8 @@ if !exists('g:vscode')
 endif
 set number 
 set noswapfile 
+set relativenumber
 syntax on
-set nocompatible
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -26,6 +26,11 @@ call plug#begin("~/.nvim/plugged")
 "	Plug 'sheerun/vim-polyglot'
 	Plug 'joshdick/onedark.vim'
 	Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-sensible'
+	Plug 'tpope/vim-fugitive'
+	Plug 'vim-airline/vim-airline'
+
+
 call plug#end()
 let g:semshi#simplify_markup = "false"
 let g:material_terminal_italics = 1
@@ -54,6 +59,24 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 nnoremap <leader><C-p> :find 
+
+
+set nocompatible
+filetype plugin on
+
+" FILE BROWSING:
+
+" Tweaks for browsing
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
+
+
+
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
+
 
 

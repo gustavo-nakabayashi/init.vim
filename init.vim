@@ -31,10 +31,16 @@ call plug#begin("~/.nvim/plugged")
 	Plug 'vim-airline/vim-airline'
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	Plug 'airblade/vim-gitgutter'
 	Plug 'frazrepo/vim-rainbow'
 	Plug 'matze/vim-move'
+	Plug 'mhinz/vim-signify'
+"Javascript
 
+
+	Plug 'prettier/vim-prettier', {
+	   'do': 'yarn install',
+	   'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'svelte', 'yaml', 'html'] }
+"Python
 
 call plug#end()
 let g:semshi#simplify_markup = "false"
@@ -42,7 +48,6 @@ let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
 colorscheme onedark
 
-inoremap jk <ESC>
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 set hlsearch 

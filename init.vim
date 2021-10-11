@@ -29,6 +29,11 @@ call plug#begin("~/.nvim/plugged")
 	Plug 'tpope/vim-sensible'
 	Plug 'tpope/vim-fugitive'
 	Plug 'vim-airline/vim-airline'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'frazrepo/vim-rainbow'
+	Plug 'matze/vim-move'
 
 
 call plug#end()
@@ -75,8 +80,20 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 
 
+nnoremap <C-p> :GFiles<Cr>
+nnoremap <C-g> :Ag<Cr>
+" Keep centered
+nnoremap n nzzzv
+nnoremap N Nzzzv
+nnoremap J mzJ`z
+
+inoremap . .<c-g>u
+inoremap <space> <space><c-g>u
+inoremap , ,<c-g>u
+inoremap ! !<c-g>u
+
+
 
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
-
 
 

@@ -108,13 +108,30 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
+if has('clipboard') || exists('g:vscode')
+    set clipboard^=unnamed
+
+    if has('nvim') && exists('$WSLENV')
+        let g:clipboard = {
+            \ 'name': 'win32yank-wsl',
+            \ 'copy': {
+            \    '+': 'win32yank.exe -i --crlf',
+            \    '*': 'win32yank.exe -i --crlf',
+            \  },
+            \ 'paste': {
+            \    '+': 'win32yank.exe -o --lf',
+            \    '*': 'win32yank.exe -o --lf',
+            \ },
+            \ 'cache_enabled': 0,
+        \ }
+    endif
+endif
  
 
 " Keep centered
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nnoremap J mzJ`z
-set clipboard=unnamedplus
 
 "lua require'nvim-treesitter.configs'.setup { highlight = { enable = true }}
 

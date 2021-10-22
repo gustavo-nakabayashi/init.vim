@@ -41,7 +41,12 @@ if !exists('g:vscode')
 	inoremap ! !<c-g>u
 
 endif
-
+if exists('g:vscode')
+	xmap gc  <Plug>VSCodeCommentary
+	nmap gc  <Plug>VSCodeCommentary
+	omap gc  <Plug>VSCodeCommentary
+	nmap gcc <Plug>VSCodeCommentaryLine
+endif	
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -59,8 +64,8 @@ call plug#begin("~/.nvim/plugged")
 	Plug 'tpope/vim-sensible'
 	Plug 'tpope/vim-fugitive'
 	Plug 'matze/vim-move'
-	Plug 'takac/vim-hardtime'
-
+  Plug 'michaeljsmith/vim-indent-object'
+  
 	"Vim only
 	if(!exists('g:vscode'))
 	"Themes
@@ -91,7 +96,6 @@ call plug#begin("~/.nvim/plugged")
 call plug#end()
 
 
-let g:hardtime_default_on = 1
 nnoremap <SPACE> <Nop>
 let mapleader = " "
 set hlsearch 
@@ -108,24 +112,24 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-if has('clipboard') || exists('g:vscode')
-    set clipboard^=unnamed
-
-    if has('nvim') && exists('$WSLENV')
-        let g:clipboard = {
-            \ 'name': 'win32yank-wsl',
-            \ 'copy': {
-            \    '+': 'win32yank.exe -i --crlf',
-            \    '*': 'win32yank.exe -i --crlf',
-            \  },
-            \ 'paste': {
-            \    '+': 'win32yank.exe -o --lf',
-            \    '*': 'win32yank.exe -o --lf',
-            \ },
-            \ 'cache_enabled': 0,
-        \ }
-    endif
-endif
+" if has('clipboard') || exists('g:vscode')
+    "set clipboard^=unnamed
+"
+    ""if has('nvim') && exists('$WSLENV')
+        "let g:clipboard = {
+            "\ 'name': 'win32yank-wsl',
+            "\ 'copy': {
+            "\    '+': 'win32yank.exe -i --crlf',
+            "\    '*': 'win32yank.exe -i --crlf',
+            "\  },
+            "\ 'paste': {
+            "\    '+': 'win32yank.exe -o --lf',
+            "\    '*': 'win32yank.exe -o --lf',
+            "\ },
+            "\ 'cache_enabled': 0,
+        "\ }
+    "endif
+"endif
  
 
 " Keep centered
